@@ -2,6 +2,7 @@
 #include <vector>
 using namespace std;
 
+/*
 class Solution {
 public:
     vector<vector<int> > permute(vector<int>& nums) {
@@ -26,6 +27,34 @@ public:
                 solve(res, r, nums, used);
                 r.pop_back();
                 used[i] = 0;
+            }
+        }
+    }
+};
+*/
+
+class Solution {
+public:
+    void swap(int& x, int& y) {
+        int tmp = x;
+        x = y;
+        y = tmp;
+    }
+
+    vector<vector<int> > permute(vector<int>& nums) {
+        vector<vector<int> > res;
+        recursion(res, nums, 0);
+        return res;
+    }
+
+    void recursion(vector<vector<int> >& res, vector<int> nums,  int start) {
+        if(start == nums.size()-1) {
+            res.push_back(nums);
+            return;
+        } else {
+            for(int k = start; k < nums.size(); k++) {
+                swap(nums[start], nums[k]);
+                recursion(res, nums, start+1);
             }
         }
     }
