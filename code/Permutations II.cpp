@@ -29,7 +29,7 @@ public:
                     swap(nums[start], nums[k]); 
                     recursion(res, nums, start+1);
 
-            } 
+        } 
         
     }
 };
